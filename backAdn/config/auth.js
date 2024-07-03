@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  authenticator: 'jwt', // ou 'session' se preferir usar sessões
+  authenticator: 'jwt',
 
   session: {
     serializer: 'lucid',

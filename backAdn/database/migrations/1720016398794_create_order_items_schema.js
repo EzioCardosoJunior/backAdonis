@@ -1,0 +1,22 @@
+'use strict'
+
+const Schema = use('Schema')
+
+class OrderItemsTableSchema extends Schema {
+  up () {
+    this.create('order_items', (table) => {
+      table.increments()
+      table.integer('order_id').unsigned().references('id').inTable('orders').onDelete('CASCADE')
+      table.string('item_name', 255).notNullable()
+      table.integer('quantity').notNullable()
+      table.decimal('price', 10, 2).notNullable()
+      table.timestamps()
+    })
+  }
+
+  down () {
+    this.drop('order_items')
+  }
+}
+
+module.exports = OrderItemsTableSchema

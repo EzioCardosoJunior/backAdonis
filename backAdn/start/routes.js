@@ -27,3 +27,6 @@ Route.post('users/:id/curriculums', 'CurriculumController.store').middleware('au
 
 Route.post('register', 'AuthController.register')
 Route.post('login', 'AuthController.login')
+
+Route.post('orders', 'OrderController.store')
+Route.get('orders', 'OrderController.index')
