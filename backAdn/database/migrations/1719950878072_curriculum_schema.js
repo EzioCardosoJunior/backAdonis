@@ -7,7 +7,7 @@ class CurriculumSchema extends Schema {
   up () {
     this.create('curriculums', (table) => {
       table.increments()
-      table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
+      table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE').notNullable()
       table.string('title').notNullable()
       table.text('description')
       table.timestamps()
