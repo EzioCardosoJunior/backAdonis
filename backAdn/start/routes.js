@@ -38,4 +38,9 @@ Route.post('product-groups', 'ProductGroupController.store')
 Route.get('product-groups', 'ProductGroupController.index')
 
 Route.post('product-subgroups', 'ProductSubgroupController.store')
-  Route.get('product-subgroups', 'ProductSubgroupController.index')
+Route.get('product-subgroups', 'ProductSubgroupController.index')
+
+Route.post('products/:id/add-to-stock', 'ProductController.addToStock')
+
+Route.post('stocks', 'StockController.addStock')
+Route.get('stocks', 'StockController.index')

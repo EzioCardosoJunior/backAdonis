@@ -1,7 +1,7 @@
 'use strict'
 
 const Order = use('App/Models/Order')
-const OrderItem = use('App/Models/OrderItem')
+const Stock = use('App/Models/Stock')
 
 class OrderController {
   async store ({ request, response }) {
@@ -13,21 +13,27 @@ class OrderController {
     order.order_date = order_date
     await order.save()
 
-    for (let item of items) {
-      const orderItem = new OrderItem()
-      orderItem.order_id = order.id
-      orderItem.item_name = item.item_name
-      orderItem.quantity = item.quantity
-      orderItem.price = item.price
-      await orderItem.save()
+    for (const item of items) {
+      const stock = await Stock.findBy('product_id', item.product_id)
+
+      if (!stock) {
+        return response.status(404).send({ error: `Produto com ID ${item.product_id} não encontrado no estoque.` })
+      }
+
+      if (stock.quantity < item.quantity) {
+        return response.status(400).send({ error: `Estoque insuficiente para o produto com ID ${item.product_id}.` })
+      }
+
+      await order.items().create({
+        product_id: item.product_id,
+        quantity: item.quantity
+      })
+
+      stock.quantity -= item.quantity
+      await stock.save()
     }
 
     return response.status(201).json(order)
-  }
-
-  async index ({ response }) {
-    const orders = await Order.query().with('items').fetch()
-    return response.json(orders)
   }
 }
 

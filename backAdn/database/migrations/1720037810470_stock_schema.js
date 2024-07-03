@@ -2,11 +2,10 @@
 
 const Schema = use('Schema')
 
-class OrderItemsSchema extends Schema {
+class StockTableSchema extends Schema {
   up () {
-    this.create('order_items', (table) => {
+    this.create('stocks', (table) => {
       table.increments()
-      table.integer('order_id').unsigned().references('id').inTable('orders').onDelete('CASCADE')
       table.integer('product_id').unsigned().references('id').inTable('products').onDelete('CASCADE')
       table.integer('quantity').notNullable()
       table.timestamps()
@@ -14,8 +13,8 @@ class OrderItemsSchema extends Schema {
   }
 
   down () {
-    this.drop('order_items')
+    this.drop('stocks')
   }
 }
 
-module.exports = OrderItemsSchema
+module.exports = StockTableSchema

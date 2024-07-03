@@ -1,14 +1,14 @@
 'use strict'
 
+/** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class ProductsTableSchema extends Schema {
+class CreateProductsSchema extends Schema {
   up () {
     this.create('products', (table) => {
       table.increments()
-      table.integer('subgroup_id').unsigned().references('id').inTable('product_subgroups').onDelete('CASCADE')
       table.string('name', 255).notNullable()
-      table.text('description')
+      table.string('description', 255)
       table.decimal('price', 10, 2).notNullable()
       table.timestamps()
     })
@@ -19,4 +19,4 @@ class ProductsTableSchema extends Schema {
   }
 }
 
-module.exports = ProductsTableSchema
+module.exports = CreateProductsSchema

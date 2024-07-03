@@ -2,12 +2,12 @@
 
 const Schema = use('Schema')
 
-class OrdersTableSchema extends Schema {
+class OrdersSchema extends Schema {
   up () {
     this.create('orders', (table) => {
       table.increments()
-      table.string('customer_name', 255).notNullable()
-      table.string('customer_code', 80).notNullable()
+      table.string('customer_name').notNullable()
+      table.string('customer_code').notNullable()
       table.date('order_date').notNullable()
       table.timestamps()
     })
@@ -18,4 +18,4 @@ class OrdersTableSchema extends Schema {
   }
 }
 
-module.exports = OrdersTableSchema
+module.exports = OrdersSchema
