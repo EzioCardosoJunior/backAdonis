@@ -30,3 +30,12 @@ Route.post('login', 'AuthController.login')
 
 Route.post('orders', 'OrderController.store')
 Route.get('orders', 'OrderController.index')
+
+Route.post('products', 'ProductController.store')
+Route.get('products', 'ProductController.index')
+
+Route.post('product-groups', 'ProductGroupController.store')
+Route.get('product-groups', 'ProductGroupController.index')
+
+Route.post('product-subgroups', 'ProductSubgroupController.store')
+  Route.get('product-subgroups', 'ProductSubgroupController.index')
