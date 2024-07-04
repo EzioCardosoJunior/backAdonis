@@ -21,9 +21,9 @@ Route.on('/').render('welcome')
 
 Route.get('users', 'UserController.index')
 Route.post('users', 'UserController.store')
-
+/* 
 Route.get('users/:id/curriculums', 'CurriculumController.index').middleware('auth')
-Route.post('users/:id/curriculums', 'CurriculumController.store').middleware('auth')
+Route.post('users/:id/curriculums', 'CurriculumController.store').middleware('auth') */
 
 Route.post('register', 'AuthController.register')
 Route.post('login', 'AuthController.login')
