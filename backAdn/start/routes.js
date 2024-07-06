@@ -44,3 +44,5 @@ Route.post('products/:id/add-to-stock', 'ProductController.addToStock')
 
 Route.post('stocks', 'StockController.addStock')
 Route.get('stocks', 'StockController.index')
+
+//Route.post('/posts/add', 'PostController.store').as('post.store')

@@ -12,8 +12,8 @@ class AuthController {
 
   async login ({ request, auth, response }) {
     const { email, password } = request.only(['email', 'password'])
-    const token = await auth.attempt(email, password)
-    return response.json({ token })
+    const data = await auth.attempt(email, password)
+    return response.json({ data })
   }
 }
 
