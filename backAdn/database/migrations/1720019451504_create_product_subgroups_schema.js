@@ -6,7 +6,7 @@ class ProductSubgroupsTableSchema extends Schema {
   up () {
     this.create('product_subgroups', (table) => {
       table.increments()
-      table.integer('group_id').unsigned().references('id').inTable('product_groups').onDelete('CASCADE')
+      table.integer('group_id').unsigned().references('id').inTable('product_groups').onDelete('CASCADE').notNullable()
       table.string('name', 255).notNullable()
       table.timestamps()
     })

@@ -4,7 +4,8 @@ const ProductSubgroup = use('App/Models/ProductSubgroup')
 
 class ProductSubgroupController {
   async store ({ request, response }) {
-    const { group_id, name } = request.only(['group_id', 'name'])
+    console.log(request)
+    const { group_id, group_name, name } = request.only(['group_id', 'name'])
 
     const productSubgroup = new ProductSubgroup()
     productSubgroup.group_id = group_id
